@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data; let i = index">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <a [routerLink]="['/dashboard/edit-user', i]" class="text-warning"
+            >Edit</a
+          >
+          /
+          <a class="text-danger" (click)="deleteUser(i)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
