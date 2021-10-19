@@ -12,6 +12,7 @@
 
 # profiling files
 chrome-profiler-events*.json
+backend
 
 # IDEs and editors
 /.idea

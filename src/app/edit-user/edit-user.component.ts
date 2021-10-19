@@ -21,19 +21,31 @@ export class EditUserComponent implements OnInit {
       number: new FormControl(''),
     });
 
-    const data = this.userDataService.getUserById(
-      this.activateRoute.snapshot.params['id']
-    );
-    this.userForm.setValue(data);
+    // const data = this.userDataService.getUserById(
+    //   this.activateRoute.snapshot.params['id']
+    // );
+    // this.userForm.setValue(data);
+
+    this.userDataService
+      .getUserById(this.activateRoute.snapshot.params['id'])
+      .subscribe((data) => {
+        this.userForm.setValue(data);
+      });
   }
 
   ngOnInit(): void {}
 
   update() {
-    this.userDataService.updateUser(
-      this.activateRoute.snapshot.params['id'],
-      this.userForm.value
-    );
-    this.router.navigate(['/dashboard']);
+    // this.userDataService.updateUser(
+    //   this.activateRoute.snapshot.params['id'],
+    //   this.userForm.value
+    // );
+    // this.router.navigate(['/dashboard']);
+
+    this.userDataService
+      .updateUser(this.activateRoute.snapshot.params['id'], this.userForm.value)
+      .subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
   }
 }

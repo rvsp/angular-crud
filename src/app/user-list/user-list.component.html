@@ -5,6 +5,7 @@
         <th>#</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Number</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -13,12 +14,15 @@
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.email }}</td>
+        <td>{{ item.number }}</td>
         <td>
-          <a [routerLink]="['/dashboard/edit-user', i]" class="text-warning"
+          <a
+            [routerLink]="['/dashboard/edit-user', item.id]"
+            class="text-warning"
             >Edit</a
           >
           /
-          <a class="text-danger" (click)="deleteUser(i)">Delete</a>
+          <a class="text-danger" (click)="deleteUser(item.id)">Delete</a>
         </td>
       </tr>
     </tbody>

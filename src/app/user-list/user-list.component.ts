@@ -7,15 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  data = [];
+  data: any;
 
   constructor(private userDataService: UserDataService) {
-    this.data = this.userDataService.getUser();
+    // console.log(this.userDataService.getUser());
+    this.refresh();
   }
 
   ngOnInit(): void {}
 
+  refresh() {
+    this.userDataService.getUser().subscribe((result) => {
+      this.data = result;
+    });
+  }
+
   deleteUser(id) {
-    this.userDataService.deleteUser(id);
+    // this.userDataService.deleteUser(id);
+    this.userDataService.deleteUser(id).subscribe(() => {
+      alert('User Deleted');
+      this.refresh();
+    });
   }
 }

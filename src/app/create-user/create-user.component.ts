@@ -25,8 +25,9 @@ export class CreateUserComponent implements OnInit {
 
   submit() {
     if (this.userForm.value) {
-      this.userDataService.createUser(this.userForm.value);
-      this.router.navigate(['/dashboard']);
+      this.userDataService.createUser(this.userForm.value).subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
     } else {
       alert('Please fill all the fields');
     }
